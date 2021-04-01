@@ -1,0 +1,5 @@
+export const AuthActionTypes = {
+    SET_CURRENT_USER: 'SET_CURRENT_USER',
+    LOGOUT_SUCCESS: 'LOGOUT_SUCCESS',
+    LOGIN_LOADING: 'LOGIN_LOADING'
+}
