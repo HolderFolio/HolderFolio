@@ -42,8 +42,10 @@ const registersuccess = data => ({
 const registerAction = data => {
   return dispatch => {
     return Auth.register(data).then(newUser => {
-      console.log(newUser)
+      console.log(newUser.data)
       dispatch(registersuccess(newUser))
+    }).catch(res => {
+      console.log(res)
     })
 
   }

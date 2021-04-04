@@ -21,8 +21,9 @@ const SignUpScreen = ( props ) => {
         'name': name,
         'email': email,
         'password': password,
-        'confirmpassword': confirmpassword
+        'passwordConfirm': confirmpassword
       }
+  
       dispatch(AuthAction.registerAction(data))
     }
 
@@ -36,26 +37,26 @@ const SignUpScreen = ( props ) => {
               <TextInput
                     style={styles.input}
                     placeholder={'name'}
-                    onChangeText={() => setName()}
+                    onChangeText={(name) => setName(name)}
                     value={name}
                 />
                 <TextInput
                     style={styles.input}
                     placeholder={'email'}
-                    onChangeText={() => setEmail()}
+                    onChangeText={(email) => setEmail(email)}
                     value={email}
                 />
                 <TextInput
                     style={styles.input}
                     value={password}
                     placeholder="password"
-                    onChangeText={() => setPassword()}
+                    onChangeText={(password) => setPassword(password)}
                 />
                 <TextInput
                     style={styles.input}
                     value={confirmpassword}
                     placeholder="confirmpassword"
-                    onChangeText={() => setConfirmPassword()}
+                    onChangeText={(confirmpassword) => setConfirmPassword(confirmpassword)}
                 />
             </View>
             <View style={ConatainerButtonLogin}>

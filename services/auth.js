@@ -28,13 +28,22 @@ return axios.post(`https://holderfolio-backend-dev.herokuapp.com/api/v1/users/lo
 }
 
 const register = data => {
+  console.log(data)
+  const data2 ={
+    "name": "user2",
+    "email": "user4@user.com",
+    "password": "ABcd1234*",
+    "passwordConfirm": "ABcd1234*"
+}
   var conf = {
     headers: {
       'Content-Type': 'application/json'
       }
   }
-  return axios.post('https://holderfolio-backend-dev.herokuapp.com/api/v1/users/signup', data, conf).then(newUser => {
+  return axios.post('https://holderfolio-backend-dev.herokuapp.com/api/v1/users/signup', data2, conf).then(newUser => {
     return newUser
+  }).catch(res => {
+    return res
   })
 }
 
@@ -58,6 +67,7 @@ const logout =  () => {
 
 export const Auth = {
   loginManuel: loginManuel,
-  logout: logout
+  logout: logout,
+  register: register
 }
   
