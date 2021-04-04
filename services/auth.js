@@ -2,23 +2,23 @@ import axios from "axios";
 import { LocalStorage } from '../helpers/LocalStorage'
 
 
-
+// https://holderfolio-backend-dev.herokuapp.com/
 
 const loginManuel =  user => {
 var data = {
     "email": user.email,
     "password": user.password
 }
-var data = {
-    "email": "andres.gomesiglesias@gmail.com",
-    "password": "12Nevers34*"
-}
+// var data = {
+//     "email": "andres.gomesiglesias@gmail.com1",
+//     "password": "12Nevers34*"
+// }
 var conf = {
   headers: {
     'Content-Type': 'application/json'
     }
 }
-return axios.post(`https://holderfolio-backend.herokuapp.com/api/v1/users/login`, JSON.stringify(data), conf).then(user => {
+return axios.post(`https://holderfolio-backend-dev.herokuapp.com/api/v1/users/login`, JSON.stringify(data), conf).then(user => {
       LocalStorage.setStorage('user', user.data)
       return user;
   }).catch(function (err) {
@@ -27,6 +27,16 @@ return axios.post(`https://holderfolio-backend.herokuapp.com/api/v1/users/login`
   })
 }
 
+const register = data => {
+  var conf = {
+    headers: {
+      'Content-Type': 'application/json'
+      }
+  }
+  return axios.post('https://holderfolio-backend-dev.herokuapp.com/api/v1/users/signup', data, conf).then(newUser => {
+    return newUser
+  })
+}
 
 
 const logout =  () => {
@@ -35,7 +45,7 @@ const logout =  () => {
       'Content-Type': 'application/json'
       }
   }
-  return axios.get(`https://holderfolio-backend.herokuapp.com/api/v1/users/logout`, conf).then(user => {
+  return axios.get(`https://holderfolio-backend-dev.herokuapp.com/api/v1/users/logout`, conf).then(user => {
   if (user.status === 200) {
       LocalStorage.removeStarge('user')
       return true

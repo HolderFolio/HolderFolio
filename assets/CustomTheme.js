@@ -43,8 +43,8 @@ export const LightTheme = {
         statusbar: '#1E1E2E'
     },
     fonts: {
-        regular: 'Helvetica Neue',
-        medium: 'Helvetica Neue Light',
+        // regular: 'Helvetica Neue',
+        // medium: 'Helvetica Neue Light',
       },
     sizes: {
         horizontal: 20

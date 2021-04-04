@@ -11,6 +11,11 @@ const loginLoadingAction = () => ({
     payload: false,
   });
 
+const errorSetUser = err => ({
+  type: AuthActionTypes.ERROR_LOGIN_USER,
+  payload: err,
+})
+
 
 
 const loginManuel = (email, password) =>  {
@@ -19,12 +24,28 @@ const loginManuel = (email, password) =>  {
     return Auth.loginManuel(data).then(user => {
       try {
           if (user.data.status === 'success' || user.data.status === 200) {
-            return user
+            dispatch(setCurrentUser(user))
           }
        } catch {
-          return user.message
+          var err = user.message
+          dispatch(errorSetUser(err))
        }
     })
+  }
+}
+
+const registersuccess = data => ({
+  type: AuthActionTypes.REGISTER_SUCCES,
+  payload: data
+})
+
+const registerAction = data => {
+  return dispatch => {
+    return Auth.register(data).then(newUser => {
+      console.log(newUser)
+      dispatch(registersuccess(newUser))
+    })
+
   }
 }
  
@@ -46,4 +67,5 @@ const loginManuel = (email, password) =>  {
     setCurrentUser: setCurrentUser,
     logout: logout,
     loginLoadingAction: loginLoadingAction,
+    registerAction, registerAction,
   }

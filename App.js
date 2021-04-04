@@ -12,12 +12,7 @@ import Index from './Index'
 
 
 const App = props => {
-  // const [ loading , isLoading] = useState(true)
-  // if (loading) {
-  //   return (<View style={{justifyContent: 'center', flex: 1, alignContent:'center'}}>
-  //    <ActivityIndicator size='large'/>
-  //   </View>)
-  // }
+
   return (
     <SafeAreaView style={styles.safeAreaView}>
       <ReduxProvider store={store}>

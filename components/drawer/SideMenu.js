@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View,  SafeAreaView, Text} from 'react-native';
+import { StyleSheet, View,  ScrollView, Text} from 'react-native';
 import { IconButton, Avatar, withTheme, Divider, List, Button } from 'react-native-paper';
 import { useSelector, useDispatch } from "react-redux";
 import { AuthAction } from '../../redux/auth/auth-action';
@@ -42,7 +42,7 @@ const SideMenu = ({ props, navigation} ) => {
     }
     return (
        
-        <SafeAreaView style={container} >
+        <ScrollView style={container} >
             <View style={header}>
                 <IconButton
                     icon="arrow-left-thick"
@@ -100,7 +100,7 @@ const SideMenu = ({ props, navigation} ) => {
                 </Button>
             </View>
       
-        </SafeAreaView >
+        </ScrollView >
        
     )
 }

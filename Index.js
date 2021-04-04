@@ -17,12 +17,9 @@ const Index = () => {
   const user =  LocalStorage.getStorage('user')
   const dispatch = useDispatch()
 
-  // const [ loading , isLoading] = useState(true)
-
 
   useEffect(() => {
-    
-    user.then(user =>{
+      user.then(user =>{
         dispatch(AuthAction.setCurrentUser(user))
         dispatch(AuthAction.loginLoadingAction())
     })
