@@ -23,7 +23,6 @@ const SignUpScreen = ( props ) => {
         'password': password,
         'passwordConfirm': confirmpassword
       }
-  
       dispatch(AuthAction.registerAction(data))
     }
 

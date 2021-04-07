@@ -24,11 +24,10 @@ const loginManuel = (email, password) =>  {
     return Auth.loginManuel(data).then(user => {
       try {
           if (user.data.status === 'success' || user.data.status === 200) {
-            dispatch(setCurrentUser(user))
+            dispatch(setCurrentUser(user.data))
           }
        } catch {
-          var err = user.message
-          dispatch(errorSetUser(err))
+            dispatch(errorSetUser(user))
        }
     })
   }
@@ -42,7 +41,6 @@ const registersuccess = data => ({
 const registerAction = data => {
   return dispatch => {
     return Auth.register(data).then(newUser => {
-      console.log(newUser.data)
       dispatch(registersuccess(newUser))
     }).catch(res => {
       console.log(res)

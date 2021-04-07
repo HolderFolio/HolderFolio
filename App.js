@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, SafeAreaView,View } from 'react-native';
-import { Provider as ReduxProvider } from 'react-redux'
+import React from 'react';
+import { StyleSheet, SafeAreaView } from 'react-native';
+import { Provider as ReduxProvider} from 'react-redux'
 import { NavigationContainer } from '@react-navigation/native';
-import { Provider as PaperProvider, ActivityIndicator, Colors  } from 'react-native-paper';
 
 import store from "./redux/store"
 import Index from './Index'
 
+ 
 
 
 

@@ -1,64 +1,51 @@
 import axios from "axios";
+import { AUTH_ENDPOINTS } from "../constants/EndPoints_API";
 import { LocalStorage } from '../helpers/LocalStorage'
+import { StorageToken } from "../helpers/StorageToken";
+import { client } from './AxiosConfig'
 
-
-// https://holderfolio-backend-dev.herokuapp.com/
-
-const loginManuel =  user => {
-var data = {
-    "email": user.email,
-    "password": user.password
-}
-// var data = {
-//     "email": "andres.gomesiglesias@gmail.com1",
-//     "password": "12Nevers34*"
-// }
-var conf = {
-  headers: {
-    'Content-Type': 'application/json'
-    }
-}
-return axios.post(`https://holderfolio-backend-dev.herokuapp.com/api/v1/users/login`, JSON.stringify(data), conf).then(user => {
-      LocalStorage.setStorage('user', user.data)
-      return user;
+const loginManuel = user => {
+  var data = {
+      "email": user.email,
+      "password": user.password
+  }
+  // var data = {
+  //   "email": "andres.gomesiglesias@gmail.com",
+  //   "password": "12Nevers34*"
+  // }
+  return client().post(AUTH_ENDPOINTS.LOGIN, JSON.stringify(data)).then(res => {
+    LocalStorage.setStorage('user', res.data)
+    StorageToken.setToken(res.data.token)
+    return res;
   }).catch(function (err) {
-      LocalStorage.removeStarge('user')
-      return err
+    LocalStorage.removeStarge('user')
+    StorageToken.setToken(null)
+    return err.response.data
   })
 }
 
+
 const register = data => {
-  console.log(data)
-  const data2 ={
-    "name": "user2",
-    "email": "user4@user.com",
-    "password": "ABcd1234*",
-    "passwordConfirm": "ABcd1234*"
-}
   var conf = {
-    headers: {
-      'Content-Type': 'application/json'
-      }
+    headers: { 'Content-Type': 'application/json' }
   }
-  return axios.post('https://holderfolio-backend-dev.herokuapp.com/api/v1/users/signup', data2, conf).then(newUser => {
+  return client().post(AUTH_ENDPOINTS.REGISTER, data ).then(newUser => {
+    LocalStorage.setStorage('user', newUser.data)
+    StorageToken.setToken(newUser.token)
     return newUser
   }).catch(res => {
+    LocalStorage.removeStarge('user')
+    StorageToken.setToken(null)
     return res
   })
 }
 
 
 const logout =  () => {
-  var conf = {
-    headers: {
-      'Content-Type': 'application/json'
-      }
-  }
-  return axios.get(`https://holderfolio-backend-dev.herokuapp.com/api/v1/users/logout`, conf).then(user => {
-  if (user.status === 200) {
+  return client().get(AUTH_ENDPOINTS.LOGOUT).then(user => {
       LocalStorage.removeStarge('user')
+      StorageToken.setToken(null)
       return true
-    }
   }).catch(function (err) {
       return false
   })

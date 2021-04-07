@@ -14,11 +14,7 @@ const HeaderScreen = props => {
     const toggle = useSelector(state => state.syteme.drawerNav)
     const { container, userIcone } = styles
 
-    useEffect(() => {
-        return () => {
-          console.log('will unmount');
-        }
-      }, []);
+
 
     const toggleSideMenu = () => {
         dispatch(toggleDrawerAction(toggle))

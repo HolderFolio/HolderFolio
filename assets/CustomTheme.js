@@ -8,6 +8,7 @@ export const LightTheme = {
       ...DefaultT.colors,
       surface: "#F5F6FA",
       background: "#FFFFFF",
+      icone: '#5fa5a6',
       interlistcolor: "#E8E8EB",
       text: 'black',
       error: '#B71F0E',
@@ -16,10 +17,10 @@ export const LightTheme = {
       backdrop: '#001021',  
       statusbar: 'black'
     },
-    fonts: {
-        regular: 'Helvetica Neue',
-        medium: 'Helvetica Neue Light',
-      },
+    // fonts: {
+    //     regular: 'Helvetica Neue',
+    //     medium: 'Helvetica Neue Light',
+    //   },
       sizes: {
         horizontal: 20
     },
@@ -35,6 +36,7 @@ export const LightTheme = {
         background: "#0d182c",
         interlistcolor: "#E50507",
         border: "#707070",
+        icone: '#5fa5a6',
         text: '#FFFFFF',
         error: '#B71F0E',
         disabled: '#BEC6C6',

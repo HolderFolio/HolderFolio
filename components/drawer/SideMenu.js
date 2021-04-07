@@ -6,8 +6,8 @@ import { AuthAction } from '../../redux/auth/auth-action';
 
 import { toggleDrawerAction, toggleThemeColorAction} from '../../redux/system/system-action';
 
-const SideMenu = ({ props, navigation} ) => {
-    
+const SideMenu = ( props, navigation ) => {
+
     const dispatch = useDispatch();
     const toggle = useSelector(state => state.syteme.drawerNav)
     const toggleTheme = useSelector(state => state.syteme.theme)
@@ -33,12 +33,13 @@ const SideMenu = ({ props, navigation} ) => {
     }
     const navigatorOpenClose = screen => {
         dispatch(toggleDrawerAction(toggle))
-        return navigation.navigate(screen)
+        return props.navigation.navigate('SideBar' ,{screen: screen})
     }
-    
+   
     const logout = () => {
         dispatch(AuthAction.logout())
-        return navigation.navigate('SignIn')
+        dispatch(toggleDrawerAction(toggle))
+        props.navigation.navigate('PortFolio')
     }
     return (
        
@@ -46,13 +47,13 @@ const SideMenu = ({ props, navigation} ) => {
             <View style={header}>
                 <IconButton
                     icon="arrow-left-thick"
-                    color={"#f4f4f5"}
+                    color={props.theme.colors.icone}
                     size={24}
                     onPress={() => dispatch(toggleDrawerAction(toggle))}
                 />
                 <IconButton
                     icon= {changeThemeColor}
-                    color={"#f4f4f5"}
+                    color={props.theme.colors.icone}
                     size={24}
                     onPress={() => ToggleThemeColor()}
                 />
@@ -135,7 +136,7 @@ const styles = StyleSheet.create({
         marginTop: 16,
         marginBottom: 2,
         fontSize: 20,
-        color: '#f3f3f4',
+        color: 'black',
         marginHorizontal: 10,
     },
     list:  {

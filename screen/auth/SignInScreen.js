@@ -19,15 +19,11 @@ const SignInScreen = ( props, navigation ) => {
 
     const handlClick = () => {
         setIsloading(true)
-        dispatch(AuthAction.loginManuel(email,password)).then(user => {   
+        dispatch(AuthAction.loginManuel(email,password)).then(user => { 
             setIsloading(false)
-            try {
-                if (user.data.status === 'success' || user.data.status === 200) {
-                //  navigation.navigate('HomeScreen');
-                }
-             } catch {
-                return user
-             } 
+            navigation.navigate('HomeScreen');
+        }).catch(err => {
+            return err 
         })
     }
 
@@ -57,8 +53,8 @@ const SignInScreen = ( props, navigation ) => {
             <View style={{alignItems: 'center', justifyContent: 'center'}}>
             {isloading === true ?  
                     <ActivityIndicator animating={true} color={Colors.red800} />
-                    :
-                    error && error.user &&  (<Text style={{color: 'red'}}>{error.user}</Text>)
+                    :           
+                    error &&  (<Text style={{color: 'red'}}>{error.user.message}</Text>)
             }  
             </View>
             <View style={ConatainerButtonLogin}>
