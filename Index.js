@@ -17,7 +17,6 @@ const Index = props => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    
       user.then(res =>{
         dispatch(AuthAction.setCurrentUser(res))
         dispatch(AuthAction.loginLoadingAction())

@@ -3,6 +3,7 @@ import { withTheme, Title, Button, ActivityIndicator, Colors} from 'react-native
 import { StyleSheet, View, TextInput, Text, Linking  } from 'react-native';
 import { useDispatch, useSelector } from "react-redux";
 import { AuthAction } from '../../redux/auth/auth-action';
+import { auth, provider } from '../../services/configFireBase';
 
 
 
@@ -31,6 +32,12 @@ const SignInScreen = ( props, navigation ) => {
         props.navigation.navigate('SignUp');
     }
 
+    const handleClickSignUpGoogle = () => {
+        auth().signInWithPopup(provider).then(result => { 
+            console.log(result)
+        })
+
+    }
     return (
         <View style={[container, {backgroundColor: props.theme.colors.surface}]}>
             <View style={containerTitlteWelcome}>
@@ -64,6 +71,15 @@ const SignInScreen = ( props, navigation ) => {
                     onPress={() => handlClick()}
                 >
                     Login
+                </Button>
+            </View>
+            <View style={ConatainerButtonLogin}>
+                <Button    
+                    mode={'contained'}
+                    color={'#E50507'}     
+                    onPress={() => handleClickSignUpGoogle()}
+                >
+                    Login Google
                 </Button>
             </View>
             <View style={containerSignUp}>
