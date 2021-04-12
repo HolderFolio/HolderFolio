@@ -15,15 +15,11 @@ import{ firebaseConfig } from './services/FireBaseConfig'
 
 const App = props => {
 
-  useEffect(() => {
-    if (!firebase.apps.length) {
-      firebase.initializeApp(firebaseConfig);
-      firebase.auth().onAuthStateChanged((user) => {
-        console.log(user)
-      })
-    }
-        
-  }, []);
+  // useEffect(() => {
+  //   if (!firebase.apps.length) {
+  //     firebase.initializeApp(firebaseConfig);
+  //   }
+  // }, []);
 
   return (
     <SafeAreaView style={styles.safeAreaView}>

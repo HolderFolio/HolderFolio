@@ -26,9 +26,7 @@ const loginManuel = user => {
 
 
 const register = data => {
-  var conf = {
-    headers: { 'Content-Type': 'application/json' }
-  }
+
   return client().post(AUTH_ENDPOINTS.REGISTER, data ).then(newUser => {
     LocalStorage.setStorage('user', newUser.data)
     StorageToken.setToken(newUser.token)
@@ -51,10 +49,20 @@ const logout =  () => {
   })
 }
 
+const forgotPassword = email => {
+    var data = {
+      "email": email,
+  }
+  return client().post(AUTH_ENDPOINTS.FORGETPASSWORD, data).then(res => {
+    
+  })
+
+}
 
 export const Auth = {
   loginManuel: loginManuel,
   logout: logout,
-  register: register
+  register: register,
+  forgotPassword: forgotPassword
 }
   

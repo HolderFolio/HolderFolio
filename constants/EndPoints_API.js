@@ -8,4 +8,5 @@ export const AUTH_ENDPOINTS = {
     'LOGIN': `users/login`,
     'REGISTER': `users/signup`,
     'LOGOUT': `users/logout`,
+    'FORGETPASSWORD': 'users/forgotPassword',
 }

@@ -3,6 +3,7 @@ import { withTheme, Title, Button, ActivityIndicator, Colors} from 'react-native
 import { StyleSheet, View, TextInput, Text, Linking  } from 'react-native';
 import { useDispatch, useSelector } from "react-redux";
 import { AuthAction } from '../../redux/auth/auth-action';
+import { androidConfig } from '../../services/FireBaseConfig'
 import * as Google from 'expo-google-app-auth';
 
 
@@ -11,6 +12,7 @@ const SignInScreen = ( props, navigation ) => {
     const [password, setPassword] = useState('');
     const [isloading, setIsloading] = useState(null)
     const error = useSelector(state => state.Auth.errors)
+    const user = useSelector(state => state.Auth.currentUser)
     const dispatch = useDispatch(); 
     const { container, ConatainerButtonLogin, 
         containerTitlteWelcome, titleWelcome,
@@ -23,34 +25,38 @@ const SignInScreen = ( props, navigation ) => {
         setIsloading(true)
         dispatch(AuthAction.loginManuel(email,password)).then(user => { 
             setIsloading(false)
-            navigation.navigate('HomeScreen');
+            navigation.navigate('PortFolio');
         }).catch(err => {
             return err 
         })
     }
 
     const handleClickSignUp = () => {
-        props.navigation.navigate('SignUp');
+        props.navigation.navigate('SignUp')
+    }
+    const handleClickForgetPassword= () => {
+        props.navigation.navigate('ForegetPassword')
     }
 
 
 
- const signInWithGoogleAsync = async () => {
-  try {
-    const result = await Google.logInAsync({
-        androidClientId: "1013120247578-lfqqr2kpc77l5oarqf7hjcq3vss6s8ra.apps.googleusercontent.com",
-    //   iosClientId: YOUR_CLIENT_ID_HERE,
-      scopes: ['profile', 'email'],
-    });
-    if (result.type === 'success') {
-      return result.accessToken;
-    } else {
-      return { cancelled: true };
+    const signInWithGoogleAsync = async () => {
+        try {
+            const result = await Google.logInAsync({
+                androidClientId: androidConfig,
+                scopes: ['profile', 'email'],
+            });
+        
+            if (result.type === 'success') {
+                console.log(result)
+                navigation.navigate('PortFolio');
+            } else {
+                props.navigation.navigate('SignIn')
+            }
+        } catch (e) {
+            props.navigation.navigate('SignIn')
+        }
     }
-  } catch (e) {
-    return { error: true };
-  }
-}
 
     const handleClickSignUpGoogle = () => {
         signInWithGoogleAsync()
@@ -103,7 +109,10 @@ const SignInScreen = ( props, navigation ) => {
             </View>
             <View style={containerSignUp}>
                 <Text style={textAccount}>Do you don't have account?  </Text>
-                <Text style={textSignUp} onPress={() => props.navigation.navigate('SignUp')}>SingUp</Text>
+                <Text style={textSignUp} onPress={() => handleClickSignUp()}>SingUp</Text>
+            </View>
+            <View style={containerSignUp}>
+                <Text style={textSignUp} onPress={() => handleClickForgetPassword()}>password forget </Text>
             </View>
         </View>
 
