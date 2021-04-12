@@ -76,17 +76,37 @@ const SideMenu = ( props, navigation ) => {
                     onPress={() => navigatorOpenClose('Profile')}
                 />
                 <List.Item
+                    title="PortFolio"
+                    left={props => <List.Icon {...props} color={'#5fa5a6'} icon="cog-outline" />}
+                    right={props => <List.Icon {...props} icon="chevron-right" />}
+                    onPress={() => navigatorOpenClose('PortFolioSettings')}
+                />
+                <List.Item
                     title="Settings"
                     left={props => <List.Icon {...props} color={'#5fa5a6'} icon="cog-outline" />}
                     right={props => <List.Icon {...props} icon="chevron-right" />}
                     onPress={() => navigatorOpenClose('Settings')}
                 />
                 <List.Item
+                    title="Privacy Policy"
+                    left={props => <List.Icon {...props} color={'#5fa5a6'} icon="cog-outline" />}
+                    right={props => <List.Icon {...props} icon="chevron-right" />}
+                    onPress={() => navigatorOpenClose('PrivacyPolicy')}
+                />
+                <List.Item
+                    title="Contact Support"
+                    left={props => <List.Icon {...props} color={'#5fa5a6'} icon="cog-outline" />}
+                    right={props => <List.Icon {...props} icon="chevron-right" />}
+                    onPress={() => navigatorOpenClose('ContactSupport')}
+                />
+        
+                <List.Item
                     title="Help"
                     left={props => <List.Icon {...props}  color={'#5fa5a6'} icon="help-circle-outline" />}
                     right={props => <List.Icon {...props} icon="chevron-right" />}
                     onPress={(props) => console.log(props)}
                 />
+
                 <List.Item
                     title="share App"
                     left={props => <List.Icon {...props}   color={'#5fa5a6'}icon="application-import" />}
