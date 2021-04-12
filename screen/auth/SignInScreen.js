@@ -3,8 +3,7 @@ import { withTheme, Title, Button, ActivityIndicator, Colors} from 'react-native
 import { StyleSheet, View, TextInput, Text, Linking  } from 'react-native';
 import { useDispatch, useSelector } from "react-redux";
 import { AuthAction } from '../../redux/auth/auth-action';
-import { auth, provider } from '../../services/configFireBase';
-
+import * as Google from 'expo-google-app-auth';
 
 
 const SignInScreen = ( props, navigation ) => {
@@ -17,6 +16,8 @@ const SignInScreen = ( props, navigation ) => {
         containerTitlteWelcome, titleWelcome,
         containerInput, containerSignUp,
         textSignUp, textAccount,} = styles
+
+
 
     const handlClick = () => {
         setIsloading(true)
@@ -32,12 +33,30 @@ const SignInScreen = ( props, navigation ) => {
         props.navigation.navigate('SignUp');
     }
 
-    const handleClickSignUpGoogle = () => {
-        auth().signInWithPopup(provider).then(result => { 
-            console.log(result)
-        })
 
+
+ const signInWithGoogleAsync = async () => {
+  try {
+    const result = await Google.logInAsync({
+        androidClientId: "1013120247578-lfqqr2kpc77l5oarqf7hjcq3vss6s8ra.apps.googleusercontent.com",
+    //   iosClientId: YOUR_CLIENT_ID_HERE,
+      scopes: ['profile', 'email'],
+    });
+    if (result.type === 'success') {
+      return result.accessToken;
+    } else {
+      return { cancelled: true };
     }
+  } catch (e) {
+    return { error: true };
+  }
+}
+
+    const handleClickSignUpGoogle = () => {
+        signInWithGoogleAsync()
+    }
+
+
     return (
         <View style={[container, {backgroundColor: props.theme.colors.surface}]}>
             <View style={containerTitlteWelcome}>
