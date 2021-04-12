@@ -1,7 +1,8 @@
 import React, {  useState } from 'react';
 import { View, TextInput,  Text, StyleSheet } from "react-native";
 import { Button } from 'react-native-paper';
-import { forgotPassword } from '../../services/auth'
+import { Auth } from '../../services/auth';
+
 
 const ForegetPassword = () => {
     const [email, setEmail] = useState(''); 
@@ -9,7 +10,7 @@ const ForegetPassword = () => {
 
     
     const handlClick = () => {
-        forgotPassword(email)
+       Auth.forgotPassword(email)
     }
 
 
@@ -21,7 +22,7 @@ const ForegetPassword = () => {
                 placeholder={'email'}
                 onChangeText={(email) => setEmail(email)}
                 value={email}
-            />
+            /> 
             <Button    
                 mode={'contained'}
                 color={'#E50507'}     

@@ -54,7 +54,9 @@ const forgotPassword = email => {
       "email": email,
   }
   return client().post(AUTH_ENDPOINTS.FORGETPASSWORD, data).then(res => {
-    
+    console.log(res)
+  }).catch(err => {
+    console.log(err.response.data)
   })
 
 }
