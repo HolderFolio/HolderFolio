@@ -1,10 +1,13 @@
-import { useSelector } from "react-redux";
 import React from 'react';
-
+import { useSelector } from "react-redux";
 import { createStackNavigator } from '@react-navigation/stack';
 import AuthStackNavigator from './AuthStackNavigator'
 import SideBarStackNavigator from "./SideBarStackNavigator";
 import HomeTabNavigator from "./HomeTabNavigator";
+import AddStackNavigator from './AddStackNavigator';
+import AddApi from '../components/tabBar/AddButtom/AddApi';
+import AddAsset from '../components/tabBar/AddButtom/AddAsset';
+import AddCustom from '../components/tabBar/AddButtom/AddCustom';
 
 
 const AppStackNavigator = props => {
@@ -14,7 +17,7 @@ const AppStackNavigator = props => {
 
   return (
     <Stack.Navigator 
-      initialRouteName="PortFolio"
+      initialRouteName="TabNav"
       options={options}
     >
       {isSignedIn ? (
@@ -22,6 +25,21 @@ const AppStackNavigator = props => {
           <Stack.Screen
             name='TabNav'
             component={HomeTabNavigator}
+            options={options}
+          />
+          <Stack.Screen
+            name='addapi'
+            component={AddApi}
+            options={options}
+          />
+          <Stack.Screen
+            name='add-asset'
+            component={AddAsset}
+            options={options}
+          />
+          <Stack.Screen
+            name="add-custom"
+            component={AddCustom}
             options={options}
           />
           <Stack.Screen

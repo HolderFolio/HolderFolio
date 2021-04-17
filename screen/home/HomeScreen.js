@@ -5,14 +5,16 @@ import { useSelector } from "react-redux";
 
 import  HeaderScreen  from '../../components/home/HomesHeader'
 
-
-const HomeScreen = props => {
+import  ModalAdd  from '../../components/tabBar/ModalAdd';
+const HomeScreen = ({navigation,theme}) => {
     const toggleTheme = useSelector(state => state.syteme.theme)
     const { container } = styles
     return (
-        <View style={[container, {backgroundColor: props.theme.colors.surface}]}>
-            <HeaderScreen navigation={props.navigation}/>
-            <StatusBar backgroundColor={toggleTheme ? props.theme.colors.surface : 'black'} />
+        <View style={[container, {backgroundColor: theme.colors.surface}]}>
+            <HeaderScreen navigation={navigation}/>
+           
+            {/* <ModalAdd navigation={navigation}/> */}
+            <StatusBar backgroundColor={toggleTheme ? theme.colors.surface : 'black'} />
         </View>
     )
 }

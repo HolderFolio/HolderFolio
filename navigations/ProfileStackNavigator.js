@@ -10,31 +10,23 @@ const ProfileStackNavigator = props => {
 
   return (
     <Stack.Navigator 
-      initialRouteName="PortFolio"
       options={options}
     >
-      {isSignedIn ? (
-        <>
           <Stack.Screen
-            name='Profile'
+            name='dsad'
             component={HomeTabNavigator}
             options={options}
           />
           <Stack.Screen
-            name='SideBar'
+            name='asdad'
             component={SideBarStackNavigator}
             options={options}
           />
-        </>
-      ) : (
-        <>
           <Stack.Screen
-            name="Auth"
+            name="asda"
             component={AuthStackNavigator}
             options={options}
           />
-        </>
-      )}
 
     </Stack.Navigator>
   )

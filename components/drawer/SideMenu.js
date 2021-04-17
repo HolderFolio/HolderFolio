@@ -6,7 +6,7 @@ import { AuthAction } from '../../redux/auth/auth-action';
 
 import { toggleDrawerAction, toggleThemeColorAction} from '../../redux/system/system-action';
 
-const SideMenu = ( props, navigation ) => {
+const ModalAddConatiner = ( props, navigation ) => {
 
     const dispatch = useDispatch();
     const toggle = useSelector(state => state.syteme.drawerNav)
@@ -186,4 +186,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default withTheme(SideMenu)
+export default withTheme(ModalAddConatiner)

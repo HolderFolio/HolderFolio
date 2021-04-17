@@ -15,7 +15,7 @@ const AuthReducer = (state = INITIAL_STATE, action) => {
 
     switch (action.type) {
         case AuthActionTypes.SET_CURRENT_USER:
-            console.log(action.payload)
+
             return {
                 ...state, 
                 currentUser:  action.payload ? action.payload.data.user : null,

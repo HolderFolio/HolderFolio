@@ -10,8 +10,10 @@ import AppStackNavigator from './navigations/AppStackNavigator';
 
 
 
+
 const Index = props => {
-  const toggle = useSelector(state => state.Auth.userPreferences.theme)
+
+  const toggle = useSelector(state => state.Auth.userPreferences ? state.Auth.userPreferences : 'light')
   const isLoading = useSelector(state => state.Auth.loginLoading)
   const user =  LocalStorage.getStorage('user')
   const dispatch = useDispatch()
@@ -19,7 +21,7 @@ const Index = props => {
   useEffect(() => {
       user.then(res =>{
         dispatch(AuthAction.setCurrentUser(res))
-        dispatch(AuthAction.loginLoadingAction())
+        dispatch(AuthAction.loginLoadingAction(false))
     })
   }, [user])
 

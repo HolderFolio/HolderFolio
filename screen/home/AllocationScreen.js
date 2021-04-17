@@ -1,10 +1,13 @@
 import React from 'react'
-import { Text, } from 'react-native';
+import { Text, View} from 'react-native';
+import ModalAdd from '../../components/tabBar/ModalAdd';
 
 
 const AllocationScreen = props => {
     return (
+        <View>
         <Text>AllocationScreen</Text>
+        </View>
     )
 }
 
