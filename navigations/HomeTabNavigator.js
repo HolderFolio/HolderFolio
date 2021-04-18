@@ -39,6 +39,11 @@ const options = { headerShown: false }
           ),
         })}
      />
+
+
+
+
+
       <Tab.Screen
         name='PortFolio'
         component={HomeScreen}

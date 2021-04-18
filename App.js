@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { StyleSheet, SafeAreaView } from 'react-native';
 import { Provider as ReduxProvider} from 'react-redux'
 import { NavigationContainer } from '@react-navigation/native';

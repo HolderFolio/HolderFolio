@@ -1,4 +1,3 @@
-import axios from "axios";
 import { ToolbarAndroidBase } from "react-native";
 import { AUTH_ENDPOINTS } from "../constants/EndPoints_API";
 import { LocalStorage } from '../helpers/LocalStorage'
@@ -20,40 +19,36 @@ const loginManuel = user => {
   //   "email": user.email,
   //   "password": user.password
   // }
-  var data = { data: {
-    user: {
+  var data = {
+
       "email": 'andres.gomesiglesias@gmail.com',
       "password": '12Nevers34*'
-    }
-  }
+
+
   }
   
- 
-
   return client().post(AUTH_ENDPOINTS.LOGIN, JSON.stringify(data)).then(res => {
     setDataStorageSuccess(res.data, res.data.token)
-    
-    console.log(res.data)
     return res;
   }).catch(function (err) {
-    console.log(err.message)
+    console.log(err)
     setDataStorageSuccess(data, "data")
-    // setDataStorageError()
-    return err.response.data
+    setDataStorageError()
+    return err.response
   })
 }
 
 
 const loginWithGoogle = token => {
   const data = { 'idToken': token }
-
   return client().post(AUTH_ENDPOINTS.LOGINWITHGOOGLE, JSON.stringify(data)).then(res => {
+    console.log('*************************GOOGLE ', res)
     setDataStorageSuccess(res.data, res.data.token)
-    return res
+    return res.data
   }).catch(err => {
-    console.log(err)
+    console.log('---------------------------------------------------',err)
     setDataStorageError()
-    return err.response.data
+    return err.response
   })
 }
 
@@ -65,7 +60,7 @@ const register = data => {
     return newUser
   }).catch(err => {
     setDataStorageError()
-    return err.response.data
+    return err.response
   })
 }
 
@@ -75,7 +70,7 @@ const logout = () => {
     setDataStorageError()
     return true
   }).catch(function (err) {
-    return err.response.data
+    return err.response
   })
 }
 
@@ -84,7 +79,6 @@ const forgotPassword = email => {
 
   return client().post(AUTH_ENDPOINTS.FORGETPASSWORD, data).then(res => {
   }).catch(err => {
-    console.log(err.response.data)
   })
 
 }

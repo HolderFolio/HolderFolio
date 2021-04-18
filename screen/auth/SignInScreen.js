@@ -23,7 +23,7 @@ const SignInScreen = ( props ) => {
         setIsloading(true)
         dispatch(AuthAction.loginManuel(email, password,)).then(user => {
             setIsloading(false)
-            props.navigation.navigate('Auth')
+            props.navigation.navigate('TabNav', {screen: 'PortFolio'})
         }).catch(err => {
             return err
         })
@@ -48,9 +48,10 @@ const SignInScreen = ( props ) => {
 
             if (result.type === 'success') {
                 Auth.loginWithGoogle(result.idToken).then(res => {
-                    const response = dispatch(AuthAction.setCurrentUser(res.data))
+                    const response = dispatch(AuthAction.setCurrentUser(res))
                     if (response) {
-                        // props.navigation.navigate('TabNav', { screen: "PortFolio" });
+                        // props.navigation.navigate('Auth')
+                        props.navigation.navigate('TabNav', {screen: 'PortFolio'})
                     }
                 })
 

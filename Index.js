@@ -5,6 +5,7 @@ import { StyleSheet, View } from 'react-native';
 
 import {LightTheme, DarkTheme} from "./assets/CustomTheme"
 import { AuthAction } from './redux/auth/auth-action';
+import { PortfolioAction } from './redux/portfolio/portfolio-action';
 import { LocalStorage } from './helpers/LocalStorage';
 import AppStackNavigator from './navigations/AppStackNavigator';
 
@@ -15,15 +16,22 @@ const Index = props => {
 
   const toggle = useSelector(state => state.Auth.userPreferences ? state.Auth.userPreferences : 'light')
   const isLoading = useSelector(state => state.Auth.loginLoading)
+  const isPortFolio = useSelector(state => state.PortFolio.postFolioList)
   const user =  LocalStorage.getStorage('user')
   const dispatch = useDispatch()
 
   useEffect(() => {
+    console.log('FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF',isPortFolio)
       user.then(res =>{
         dispatch(AuthAction.setCurrentUser(res))
+        dispatch(PortfolioAction.getListPortFolioAction())
         dispatch(AuthAction.loginLoadingAction(false))
+    }).catch(err => {
+      console.log(err)
     })
-  }, [user])
+  }, [])
+
+
 
 
 if (isLoading) {

@@ -8,7 +8,6 @@ import AddCustom from '../components/tabBar/AddButtom/AddCustom';
 
 
 const AddStackNavigator = (props) => {
-  // const Stack = createBottomTabNavigator();
   const Stack = createStackNavigator();
   const options = { headerShown: false }
 
