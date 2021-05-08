@@ -5,7 +5,10 @@ const createPortFolioSuccess = portfolio => ({
     type: PortFolioActionTypes.PORTFOLIO_CREATE_SUCCESS,
     payload: portfolio,
 })
-
+const RetrivePortFolioSuccess = portfolio => ({
+    type: PortFolioActionTypes.PORTFOLIO_RETRIVE,
+    payload: portfolio,
+})
 const createPortFolioError = err => ({
     type: PortFolioActionTypes.PORTFOLIO_CREATE_ERROR,
     payload: err,
@@ -31,7 +34,18 @@ const getListPortFolioAction = () => {
     }
 }
 
+const retrivePortFolioAction = id => {
+    return dispatch => {
+       return  Portfolio.retrivePortFolio(id).then(res => {
+            dispatch(RetrivePortFolioSuccess(res))
+        }).then(err => {
+            dispatch(createPortFolioError(err))
+        })
+    }
+}
+
 export const PortfolioAction = {
     createPortFolioAction: createPortFolioAction,
-    getListPortFolioAction:  getListPortFolioAction
+    getListPortFolioAction:  getListPortFolioAction,
+    retrivePortFolioAction: retrivePortFolioAction,
 }

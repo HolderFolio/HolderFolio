@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const getToken = async () => {
     try {
       const value = await AsyncStorage.getItem('@auth_token');
+
       if (value !== null) {
         return value;
       }

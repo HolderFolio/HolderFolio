@@ -1,8 +1,7 @@
 
-import React from 'react';
-
-//API URL
 export const API_URL = 'https://holderfolio-backend-dev.herokuapp.com/api/v1/';
+export const API_COINCAP = 'https://api.coincap.io/v2/assets';
+
 
 export const AUTH_ENDPOINTS = {
     'LOGIN': `users/login`,
@@ -11,6 +10,7 @@ export const AUTH_ENDPOINTS = {
     'LOGOUT': `users/logout`,
     'FORGETPASSWORD': 'users/forgotPassword', 
 }
+
 
 export const PORTFOLIO_ENDPOINTS = {
     'POST_CREATE': 'portfolios',
@@ -23,6 +23,7 @@ export const EXCHANGE_ENDPOINTS = {
     'GET_LIST': 'portfolios',
     'GET_RETRIVE': 'portfolios/6075662e5920c1db609cb2e4'
 }
+
 
 export const ASSET_ENDPOINTS = {
     'POST_CREATE': 'portfolios',

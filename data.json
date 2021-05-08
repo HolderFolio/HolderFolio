@@ -1,0 +1,78 @@
+{
+    "data": {
+        "data": [
+            {
+                "createdAt": "2021-04-13T11:37:10.638Z",
+                "_id": "60758507b6c26654246d5d21",
+                "portfolio": "607584feb6c26654246d5d20",
+                "pair": "test pair",
+                "price": 30,
+                "quantity": 2,
+                "expenses": 10,
+                "user": "6075528d50e7d81bc9c87259",
+                "exchange": "Binance",
+                "id": "60758507b6c26654246d5d21"
+            },
+            {
+                "createdAt": "2021-04-13T10:44:10.700Z",
+                "_id": "60758158eb3d4db5641dbb98",
+                "portfolio": "6075662e5920c1db609cb2e4",
+                "pair": "test pair",
+                "price": 30,
+                "quantity": 2,
+                "expenses": 10,
+                "user": "6075528d50e7d81bc9c87259",
+                "exchange": "Binance",
+                "id": "60758158eb3d4db5641dbb98"
+            },
+            {
+                "createdAt": "2021-04-13T09:34:25.398Z",
+                "_id": "6075663a5920c1db609cb2e5",
+                "portfolio": "6075662e5920c1db609cb2e4",
+                "pair": "test pair",
+                "price": 30,
+                "quantity": 2,
+                "expenses": 10,
+                "user": "6075528d50e7d81bc9c87259",
+                "exchange": "Binance",
+                "id": "6075663a5920c1db609cb2e5"
+            },
+            {
+                "createdAt": "2021-04-13T09:34:25.398Z",
+                "_id": "6075663a5920c1db609cb2e5",
+                "portfolio": "6075662e5920c1db609cb2e4",
+                "pair": "test pair",
+                "price": 30,
+                "quantity": 2,
+                "expenses": 10,
+                "user": "6075528d50e7d81bc9c87259",
+                "exchange": "Swissborg",
+                "id": "6075663a5920c1db609cb2e5"
+            },
+            {
+                "createdAt": "2021-04-13T09:34:25.398Z",
+                "_id": "6075663a5920c1db609cb2e5",
+                "portfolio": "6075662e5920c1db609cb2e4",
+                "pair": "test pair",
+                "price": 30,
+                "quantity": 2,
+                "expenses": 10,
+                "user": "6075528d50e7d81bc9c87259",
+                "exchange": "Swissborg",
+                "id": "6075663a5920c1db609cb2e5"
+            },
+            {
+                "createdAt": "2021-04-13T09:34:25.398Z",
+                "_id": "6075663a5920c1db609cb2e5",
+                "portfolio": "6075662e5920c1db609cb2e4",
+                "pair": "test pair",
+                "price": 30,
+                "quantity": 2,
+                "expenses": 10,
+                "user": "6075528d50e7d81bc9c87259",
+                "exchange": "Etoro",
+                "id": "6075663a5920c1db609cb2e5"
+            }
+        ]
+    }
+}

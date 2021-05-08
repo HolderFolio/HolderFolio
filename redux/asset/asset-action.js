@@ -1,37 +1,27 @@
-import { Asset } from '../../services/asset'
+import { CoinList } from '../../services/coinCap'
 import { AssetActionTypes } from './asset-types'
 
-// const createPortFolioSuccess = portfolio => ({
-//     type: PortFolioActionTypes.PORTFOLIO_CREATE_SUCCESS,
-//     payload: portfolio,
-// })
+const getListCoinsSuccess = assets => ({
+    type: AssetActionTypes.GET_LIST_COINS_SUCCESS,
+    payload: assets,
+})
 
-// const createPortFolioError = err => ({
-//     type: PortFolioActionTypes.PORTFOLIO_CREATE_ERROR,
-//     payload: err,
-// })
+const getListCoinsError = err => ({
+    type: AssetActionTypes.GET_LIST_COINS_ERROR,
+    payload: err,
+})
 
-// const createPortFolioAction = name => {
-//     return dispatch => {
-//        return  Portfolio.getListPortFolio().then(res => {
-//             dispatch(createPortFolioSuccess(res))
-//         }).then(err => {
-//             dispatch(createPortFolioError(err))
-//         })
-//     }
-// }
 
-// const getListPortFolioAction = () => {
-//     return dispatch => {
-//        return  Portfolio.getListPortFolio().then(res => {
-//             dispatch(createPortFolioSuccess(res))
-//         }).then(err => {
-//             dispatch(createPortFolioError(err))
-//         })
-//     }
-// }
+const getListCoins = () => {
+    return dispatch => {
+       return  CoinList.GetAsset().then(res => {
+            dispatch(getListCoinsSuccess(res))
+        }).then(err => {
+            dispatch(getListCoinsError(err))
+        })
+    }
+}
 
 export const AssetAction = {
-    // createPortFolioAction: createPortFolioAction,
-    // getListPortFolioAction:  getListPortFolioAction
+    getListCoins: getListCoins,
 }

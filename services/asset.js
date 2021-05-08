@@ -8,10 +8,8 @@ const creatportfolio = name => {
         "name": name
     }
     return client().post(PORTFOLIO_ENDPOINTS.POST_CREATE, JSON.stringify(data)).then(res => {
-     console.log(res.data)
         return res.data
     }).catch(err => {
-       console.log(rr.response)
         return err.response.data
     })
 }

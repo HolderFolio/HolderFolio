@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from "react-native";
-import  HomesHeader  from '../../components/home/HomesHeader'
+import  HomesHeader  from '../../wrappers/home/HomesHeader'
 
 
 const PrivacyPolicyScreen = () => {

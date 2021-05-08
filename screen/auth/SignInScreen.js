@@ -3,7 +3,7 @@ import { withTheme, Title, Button, ActivityIndicator, Colors} from 'react-native
 import { StyleSheet, View, TextInput, Text, Linking  } from 'react-native';
 import { useDispatch, useSelector } from "react-redux";
 import { AuthAction } from '../../redux/auth/auth-action';
-import { androidConfig } from '../../services/FireBaseConfig'
+import { androidConfig } from '../../FireBaseConfig'
 import * as Google from 'expo-google-app-auth';
 import { Auth } from '../../services/auth';
 
